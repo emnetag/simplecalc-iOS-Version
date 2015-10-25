@@ -223,21 +223,6 @@
                                     <action selector="buttonPressed:forevent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i3G-sj-nQ5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wf3-zj-arp">
-                                <rect key="frame" x="0.0" y="592" width="186" height="75"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content=".">
-                                            <attributes>
-                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="30" name="HelveticaNeue"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xgu-qc-J3t">
                                 <rect key="frame" x="188" y="592" width="92" height="75"/>
                                 <animations/>
@@ -262,7 +247,7 @@
                                         <fragment content="÷">
                                             <attributes>
                                                 <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <font key="NSFont" size="30" name="HelveticaNeue"/>
+                                                <font key="NSFont" size="31" name="HelveticaNeue"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
@@ -312,6 +297,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="addition:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C3C-bJ-N5s"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SQT-8C-geI">
                                 <rect key="frame" x="282" y="516" width="93" height="75"/>
@@ -342,6 +330,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="equals:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xs7-mH-MHw"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cmH-eb-7QI">
                                 <rect key="frame" x="188" y="440" width="92" height="75"/>
@@ -379,27 +370,44 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmR-RC-Hle">
                                 <rect key="frame" x="0.0" y="150" width="375" height="54"/>
                                 <animations/>
-                                <attributedString key="attributedText"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="0">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="47" name="Helvetica-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vD3-nV-Pjr">
+                                <rect key="frame" x="0.0" y="592" width="186" height="75"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Enter">
+                                            <attributes>
+                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="30" name="HelveticaNeue"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:forevent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DdD-Yf-E1c"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="eight" destination="ww0-X6-M9y" id="oXu-n8-eXV"/>
-                        <outlet property="five" destination="MJf-Hz-cI5" id="jsq-zK-Xa7"/>
-                        <outlet property="four" destination="Yao-Qg-c87" id="S3f-in-uvj"/>
+                        <outlet property="addButton" destination="wMr-Yf-vBE" id="5qS-tD-HBj"/>
                         <outlet property="inputLabel" destination="tmR-RC-Hle" id="39m-1M-FLp"/>
-                        <outlet property="nine" destination="JaX-mG-ucH" id="PNz-Lk-xLo"/>
-                        <outlet property="one" destination="IDZ-2Q-mhA" id="m7P-Rs-wn9"/>
-                        <outlet property="seven" destination="ygz-1V-9f5" id="xtF-dZ-UVM"/>
-                        <outlet property="six" destination="pbr-wx-aRm" id="hJZ-Yz-Wd1"/>
-                        <outlet property="three" destination="cmH-eb-7QI" id="5Mq-Fr-R4T"/>
-                        <outlet property="two" destination="9Vo-j7-BD4" id="hVk-Fo-WHX"/>
-                        <outlet property="zero" destination="2v4-iA-IJe" id="14F-Gx-dVP"/>
-                        <outletCollection property="nums" destination="2v4-iA-IJe" collectionClass="NSMutableArray" id="Xqd-Ik-7YN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
