@@ -11,40 +11,26 @@ import UIKit
 enum MathOps {
     case ADD
     case SUB
+    case DIV
     case MULT
     case MOD
-    case FACT
     case AVG
     case COUNT
 }
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var navBar: UINavigationItem!
-    
     @IBOutlet weak var inputLabel: UILabel!
-    
-    @IBOutlet weak var seven: UIButton!
-    @IBOutlet weak var eight: UIButton!
-    @IBOutlet weak var nine: UIButton!
-    @IBOutlet weak var four: UIButton!
-    @IBOutlet weak var five: UIButton!
-    @IBOutlet weak var six: UIButton!
-    @IBOutlet weak var one: UIButton!
-    @IBOutlet weak var two: UIButton!
-    @IBOutlet weak var three: UIButton!
-    @IBOutlet weak var zero: UIButton!
-    
-    @IBOutlet weak var addButton: UIButton!
-    
+
     var currentOp: MathOps!
-    
+
     var leftHand: Int = 0
+    
     var rightHand: Int = 0
     
-    var currentLabel: String?
-    
     var equalsPressed: Bool = false
+    
+    var numbers: [Int] = [Int]()
     
     func convertDouble(incoming: String) -> Double {
         return NSNumberFormatter().numberFromString(incoming)!.doubleValue
@@ -78,6 +64,62 @@ class ViewController: UIViewController {
         self.currentOp! = MathOps.ADD
     }
     
+    
+    @IBAction func subtract(sender: UIButton) {
+        self.leftHand = convertInt(self.inputLabel!.text!)
+        self.inputLabel!.text! = "0"
+        
+        if self.currentOp == nil {
+            self.currentOp = MathOps.SUB
+        }
+        self.currentOp! = MathOps.SUB
+    }
+    
+    @IBAction func multiply(sender: UIButton) {
+        self.leftHand = convertInt(self.inputLabel!.text!)
+        self.inputLabel!.text! = "0"
+        
+        if self.currentOp == nil {
+            self.currentOp = MathOps.MULT
+        }
+        self.currentOp! = MathOps.MULT
+        
+    }
+    
+    @IBAction func divide(sender: UIButton) {
+        self.leftHand = convertInt(self.inputLabel!.text!)
+        self.inputLabel!.text! = "0"
+        
+        if self.currentOp == nil {
+            self.currentOp = MathOps.DIV
+        }
+        self.currentOp! = MathOps.DIV
+    }
+    
+    
+    @IBAction func countButton(sender: UIButton) {
+        if self.currentOp == nil {
+            self.currentOp = MathOps.COUNT
+        }
+        self.currentOp! = MathOps.COUNT
+
+        let num = convertInt(self.inputLabel!.text!)
+        numbers.append(num)
+        self.inputLabel!.text! = "0"
+    }
+    
+    @IBAction func avgButton(sender: UIButton) {
+        if self.currentOp == nil {
+            self.currentOp = MathOps.AVG
+        }
+        self.currentOp! = MathOps.AVG
+        
+        let num = convertInt(self.inputLabel!.text!)
+        numbers.append(num)
+        self.inputLabel!.text! = "0"
+        
+    }
+    
     @IBAction func equals(sender: UIButton) {
         self.rightHand = convertInt(self.inputLabel!.text!)
         
@@ -87,21 +129,27 @@ class ViewController: UIViewController {
                     self.inputLabel!.text! = String(self.leftHand + self.rightHand)
                 case .SUB:
                     self.inputLabel!.text! = String(self.leftHand - self.rightHand)
-                case .COUNT:
-                    print("Not sure what to do yet")
-                case .AVG:
-                    print("Not sure what to do yet")
-                case .MOD:
-                    self.inputLabel!.text! = String(self.leftHand % self.rightHand)
-                case .FACT:
-                    let result = factorial(convertInt(self.inputLabel!.text!))
-                    self.inputLabel!.text! = String(result)
                 case .MULT:
                     self.inputLabel!.text! = String(self.leftHand * self.rightHand)
+                case .DIV:
+                    self.inputLabel!.text! = String(self.leftHand / self.rightHand)
+                case .MOD:
+                    self.inputLabel!.text! = String(self.leftHand % self.rightHand)
+                case .AVG:
+                    self.numbers.append(rightHand)
+                    self.inputLabel!.text! = String(avg(self.numbers))
+                case .COUNT:
+                    self.inputLabel!.text! = String("\(countResult(self.numbers))")
             }
         }
         self.equalsPressed = true
     }
+    
+    @IBAction func factButton(sender: UIButton) {
+        let number = convertInt(self.inputLabel!.text!)
+        self.inputLabel!.text! = String(factorial(number))
+    }
+    
     
     func factorial(n: Int) -> Int {
         if n == 0 {
@@ -109,9 +157,29 @@ class ViewController: UIViewController {
         }
         var fact = 1
         for i in 1...n {
-            fact = fact * i
+            fact *= i
         }
         return fact
+    }
+    
+    func countResult(nums: [Int]) -> Int {
+        self.numbers = [Int]()
+        return nums.count
+    }
+    
+    func avg(numbers: [Int]) -> Double {
+        var sum: Int = 0
+        for number in numbers { sum += number }
+        return Double(sum / numbers.count)
+    }
+    
+    
+    @IBAction func clearText(sender: UIButton) {
+        self.leftHand = 0
+        self.rightHand = 0
+        self.numbers = [Int]()
+        self.equalsPressed = false
+        self.inputLabel!.text! = "0"
     }
     
     override func viewDidLoad() {
